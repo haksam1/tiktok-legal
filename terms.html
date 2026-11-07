@@ -3,34 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service</title>
+    <title>Terms of Service · Modern</title>
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(145deg, #f6f9fc 0%, #eef2f6 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        /* ---------- CARD CONTAINER ---------- */
+        .terms-card {
+            max-width: 880px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 2.5rem;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+                0 8px 20px -8px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2.8rem;
+            transition: transform 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            .terms-card {
+                padding: 2rem 1.5rem;
+                border-radius: 2rem;
+            }
+            body {
+                padding: 1rem;
+            }
+        }
+
+        /* ---------- HEADER ---------- */
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f172a, #334155);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+
+        .last-updated {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 2.2rem;
+            border: 1px solid #e2e8f0;
+            letter-spacing: 0.01em;
+        }
+
+        /* ---------- SECTION HEADINGS ---------- */
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #0f172a;
+            margin-top: 2rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 1px solid #e9eef3;
+            padding-bottom: 0.5rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0.8rem;
+        }
+
+        /* subtle left accent bar for headings */
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 1.3rem;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            border-radius: 4px;
+        }
+
+        /* ---------- PARAGRAPHS ---------- */
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+            color: #2d3a4e;
+            padding-left: 0.25rem;
+            border-left: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ---------- EMAIL / CONTACT STYLING ---------- */
+        .contact-email {
+            background: #f1f5f9;
+            padding: 0.15rem 0.5rem;
+            border-radius: 8px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #0f172a;
+            border: 1px solid #e2e8f0;
+            word-break: break-word;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .contact-email:hover {
+            background: #e9eef3;
+        }
+
+        /* subtle hint for placeholder */
+        .email-placeholder-note {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-left: 0.5rem;
+            font-weight: 400;
+            background: #f8fafc;
+            padding: 0.15rem 0.5rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* ---------- SECTION HOVER (faint) ---------- */
+        .section {
+            transition: background 0.2s;
+            border-radius: 16px;
+            padding: 0.1rem 0;
+        }
+
+        .section:hover {
+            background: rgba(248, 250, 252, 0.6);
+        }
+
+        /* ---------- CONTACT BLOCK (distinct) ---------- */
+        .contact-block {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 1.5rem 1.8rem;
+            margin-top: 1.5rem;
+            border: 1px solid #e9eef3;
+            box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-block h2 {
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0.2rem;
+        }
+
+        .contact-block p {
+            padding-left: 0;
+            border-left: none;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-block .contact-email {
+            font-size: 1.1rem;
+            padding: 0.25rem 0.8rem;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        /* ---------- RESPONSIVE FINE-TUNE ---------- */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            .terms-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .contact-block {
+                padding: 1rem 1rem;
+            }
+        }
+
+        /* small balanced footer */
+        .footer-note {
+            text-align: right;
+            margin-top: 1.2rem;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+    </style>
 </head>
 <body>
-    <h1>Terms of Service</h1>
-    <p>Last updated: November 7, 2026</p>
+    <div class="terms-card">
+        <h1>Terms of Service</h1>
+        <div class="last-updated">Last updated: November 7, 2026</div>
 
-    <h2>1. Acceptance of Terms</h2>
-    <p>By accessing or using this application, you agree to these Terms of Service.</p>
+        <!-- 1. Acceptance of Terms -->
+        <section class="section">
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing or using this application, you agree to these Terms of Service.</p>
+        </section>
 
-    <h2>2. Use of the Application</h2>
-    <p>You agree to use this application lawfully and responsibly.
-    You must not use it to violate the rights of others or applicable laws.</p>
+        <!-- 2. Use of the Application -->
+        <section class="section">
+            <h2>2. Use of the Application</h2>
+            <p>You agree to use this application lawfully and responsibly. You must not use it to violate the rights of others or applicable laws.</p>
+        </section>
 
-    <h2>3. Third-Party Services</h2>
-    <p>This application may integrate with third-party platforms,
-    including TikTok and YouTube. Your use of those platforms
-    remains subject to their respective terms and policies.</p>
+        <!-- 3. Third-Party Services -->
+        <section class="section">
+            <h2>3. Third-Party Services</h2>
+            <p>This application may integrate with third-party platforms, including TikTok and YouTube. Your use of those platforms remains subject to their respective terms and policies.</p>
+        </section>
 
-    <h2>4. User Responsibilities</h2>
-    <p>You are responsible for the content you upload, manage,
-    publish, or share through the application.</p>
+        <!-- 4. User Responsibilities -->
+        <section class="section">
+            <h2>4. User Responsibilities</h2>
+            <p>You are responsible for the content you upload, manage, publish, or share through the application.</p>
+        </section>
 
-    <h2>5. Availability</h2>
-    <p>We may update, modify, suspend, or discontinue application
-    features when necessary.</p>
+        <!-- 5. Availability -->
+        <section class="section">
+            <h2>5. Availability</h2>
+            <p>We may update, modify, suspend, or discontinue application features when necessary.</p>
+        </section>
 
-    <h2>6. Contact</h2>
-    <p>For questions about these terms, contact:
-    [YOUR CONTACT EMAIL]</p>
+        <!-- 6. Contact – distinct block -->
+        <section class="contact-block">
+            <h2>6. Contact</h2>
+            <p>For questions about these terms, contact:</p>
+            <p>
+                <span class="contact-email">legal@example.com</span>
+                <span class="email-placeholder-note">(replace with your contact email)</span>
+            </p>
+        </section>
+
+        <!-- subtle note for placeholder, kept minimal -->
+        <div class="footer-note">
+            <!-- no text, just spacing -->
+        </div>
+    </div>
 </body>
 </html>
